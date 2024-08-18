@@ -36,7 +36,7 @@ export async function generateEmailBody(
             <h3>${product.title} is back in stock!</h3>
             <p>We're excited to let you know that ${product.title} is now back in stock.</p>
             <p>Don't miss out - <a href="${product.url}" target="_blank" rel="noopener noreferrer">buy it now</a>!</p>
-            
+            <img src="https://i.ibb.co/pwFBRMC/Screenshot-2023-09-26-at-1-47-50-AM.png" alt="Product Image" style="max-width: 100%;" />
           </div>
           <p>Stay tuned for more updates on ${product.title} and other products you're tracking.</p>
         </div>
@@ -85,7 +85,7 @@ const transporter = nodemailer.createTransport({
   service: 'hotmail',
   port: 2525,
   auth: {
-    user: 'doantrong877@outlook.com',
+    user: 'javascriptmastery@outlook.com',
     pass: process.env.EMAIL_PASSWORD,
   },
   maxConnections: 1
@@ -93,7 +93,7 @@ const transporter = nodemailer.createTransport({
 
 export const sendEmail = async (emailContent: EmailContent, sendTo: string[]) => {
   const mailOptions = {
-    from: 'doantrong877@outlook.com',
+    from: 'javascriptmastery@outlook.com',
     to: sendTo,
     html: emailContent.body,
     subject: emailContent.subject,
