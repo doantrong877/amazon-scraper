@@ -3,16 +3,21 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; 
 import { Carousel } from 'react-responsive-carousel';
 import Image from "next/image";
+import { Product } from "@/types";
 
-const heroImages = [
-  { imgUrl: '/assets/images/hero-1.svg', alt: 'smartwatch'},
-  { imgUrl: '/assets/images/hero-2.svg', alt: 'bag'},
-  { imgUrl: '/assets/images/hero-3.svg', alt: 'lamp'},
-  { imgUrl: '/assets/images/hero-4.svg', alt: 'air fryer'},
-  { imgUrl: '/assets/images/hero-5.svg', alt: 'chair'},
-]
+interface Props {
+  products: Product[];
+}
 
-const HeroCarousel = () => {
+// const heroImages = [
+//   { imgUrl: '/assets/images/hero-1.svg', alt: 'smartwatch'},
+//   { imgUrl: '/assets/images/hero-2.svg', alt: 'bag'},
+//   { imgUrl: '/assets/images/hero-3.svg', alt: 'lamp'},
+//   { imgUrl: '/assets/images/hero-4.svg', alt: 'air fryer'},
+//   { imgUrl: '/assets/images/hero-5.svg', alt: 'chair'},
+// ]
+
+const HeroCarousel = ({products}: Props) => {
   return (
     <div className="hero-carousel">
       <Carousel
@@ -23,14 +28,14 @@ const HeroCarousel = () => {
         showArrows={false}
         showStatus={false}
       >
-        {heroImages.map((image) => (
+        {products.map((product) => (
           <Image 
-            src={image.imgUrl}
-            alt={image.alt}
+            src={product.image}
+            alt={product.title}
             width={484}
             height={484}
             className="object-contain"
-            key={image.alt}
+            key={product._id}
           />
         ))}
       </Carousel>
